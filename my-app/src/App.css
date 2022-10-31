@@ -18,13 +18,10 @@
   color: white;
 }
 
-.form {
-  font-weight: bold;
-}
 
 label {
   text-align: right;
-  margin-right: 3%;
+  margin-right: 0px;
 }
 
 button.btn {
