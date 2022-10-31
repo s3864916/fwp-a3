@@ -64,7 +64,7 @@ export default function CreateEmpForm() {
         // Add skill to store
         skillsDispatch(addSkillAction(fields.skillName, fields.skillExp, fields.proficiency));
         // Clear skill for text fields
-        setFields({ ...fields, "skillName": "", "skillExp": "", "proficiency": ""});
+        setFields({ ...fields, "skillName": "", "skillExp": ""});
         setAllowAddSkill(false)
     }
 
