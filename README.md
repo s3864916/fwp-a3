@@ -1,7 +1,4 @@
-## Project title
-a3-s3864916
-
-## Project description
+# Project description
 This is a react project for COSC2758 Further Web Programming - Semester 2, 2022 - Assignment 3
 
 ## Team details
