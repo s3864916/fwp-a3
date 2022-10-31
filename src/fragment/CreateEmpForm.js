@@ -168,7 +168,7 @@ export default function CreateEmpForm() {
                             <div className="row mb-3">
                                 <label className="col-sm-2 col-control-label"></label>
                                 <div className="col">
-                                    <button type="button" className="btn btn-primary col-sm-6 btn-sm"
+                                    <button id="addSkill" type="button" className="btn btn-primary col-sm-6 btn-sm"
                                         onClick={addSkill} disabled={!allowAddSkill}>Add a new skill</button>
                                 </div>
                             </div>
@@ -186,13 +186,13 @@ export default function CreateEmpForm() {
                                 <div className="col col-sm-6 col-form-control" >
                                     <input type="radio" name="proficiency" id="beginner" className="col me-1"
                                         value="beginner" onClick={handleInputChange} />
-                                    <label className="me-3" htmlFor="beginner" style={{ fontWeight: "normal" }}>Beginner</label>
+                                    <label className="me-3" htmlFor="beginner" id="beginner" style={{ fontWeight: "normal" }}>Beginner</label>
                                     <input type="radio" name="proficiency" id="intermediate" className="col me-1"
                                         value="intermediate" onClick={handleInputChange} />
-                                    <label className="me-3" htmlFor="intermediate" style={{ fontWeight: "normal" }} >Intermediate</label>
+                                    <label className="me-3" htmlFor="intermediate" id="intermediate" style={{ fontWeight: "normal" }} >Intermediate</label>
                                     <input type="radio" name="proficiency" id="advanced" className="col me-1"
                                         value="advanced" onClick={handleInputChange} />
-                                    <label className="me-3" htmlFor="advanced" style={{ fontWeight: "normal" }} >Advanced</label>
+                                    <label className="me-3" htmlFor="advanced" id="advanced" style={{ fontWeight: "normal" }} >Advanced</label>
                                 </div>
                             </div>
 
