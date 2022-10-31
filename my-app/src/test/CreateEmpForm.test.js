@@ -1,5 +1,4 @@
-import { fireEvent, render, screen } from '@testing-library/react';
-import App from "../App"
+import { fireEvent, render } from '@testing-library/react';
 import CreateEmpForm from "../CreateEmpForm";
 
 const nameEmptyErrorMsg = "Name is required."

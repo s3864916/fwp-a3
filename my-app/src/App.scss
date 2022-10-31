@@ -1,0 +1,42 @@
+
+.App {
+    text-align: left;
+  }
+  
+  .App-logo {
+    height: 40vmin;
+    pointer-events: none;
+  }
+  
+  .App-header {
+    background-color: #4479b2;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+  }
+  
+  
+  label {
+    text-align: right;
+    margin-right: 0px;
+    font-weight: bold;;
+  }
+  
+  button.btn {
+    width: fit-content;
+    margin-left: 0px;
+  }
+
+  $theme-colors: (
+    "primary": #4479b2,
+    "light":      #eeeeee,
+    "dark":       #454545
+  );
+
+  @import "../node_modules/bootstrap/scss/bootstrap.scss";
+
+  

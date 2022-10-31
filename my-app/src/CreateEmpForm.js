@@ -125,7 +125,7 @@ export default function CreateEmpForm() {
                             <div className="row mb-3">
                                 <label className="col-md-2 col-control-label"></label>
                                 <div className="col">
-                                    <button type="button" className="ms-1 btn btn-secondary col-md-6 btn-sm"
+                                    <button type="button" className="ms-1 btn btn-primary col-md-6 btn-sm"
                                         onClick={addSkill} disabled={!allowAddSkill}>Add a new skill</button>
                                 </div>
                             </div>
