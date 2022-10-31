@@ -1,5 +1,5 @@
 import React, { useState, useReducer, useEffect } from "react";
-import { skillsReducer, initialSkills, addSkillAction, clearSkillsAction} from "./reducer/skill";
+import { skillsReducer, initialSkills, addSkillAction, clearSkillsAction} from "../reducer/skill";
 
 /**
  * form for create employee,
