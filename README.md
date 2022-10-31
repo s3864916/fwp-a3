@@ -10,7 +10,7 @@ This is a react project for _COSC2758 Further Web Programming - Semester 2, 2022
 - **install:** 
   - npm install
 - **geneate documentation html files:** 
-  - jsdoc (file)
+  - npm run docs
 - **browse documentation:** 
   - open out/index.html 
 
