@@ -1,12 +1,12 @@
-# Project description
+## Project description
 This is a react project for COSC2758 Further Web Programming - Semester 2, 2022 - Assignment 3
 
-# Team details
+## Team details
 - Name: Yung-En Chi
 - StudentID: s3864916
 
-# Install & Configure
-## Commands
+## Install & Configure
+### Commands
 - **install:** 
   - npm install
 - **geneate documentation html files:** 
@@ -14,7 +14,7 @@ This is a react project for COSC2758 Further Web Programming - Semester 2, 2022 
 - **browse documentation:** 
   - open out/index.html 
 
-## External Package Used
+### External Package Used
 - **bootstrap**
   - install: npm install bootstrap
   - version: *^5.2.2*
@@ -26,11 +26,11 @@ This is a react project for COSC2758 Further Web Programming - Semester 2, 2022 
   - version: *^3.6.11*
 
  
-# Run project
+## Run project
 - **run project:** 
   - npm start
 
-# References
+## References
 - general:
   - https://www.w3schools.com/
   - https://reactjs.org/
