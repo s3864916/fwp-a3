@@ -4,6 +4,8 @@ import { skillsReducer, initialSkills, addSkillAction, clearSkillsAction} from "
 /**
  * form for create employee,
  * input fields: full name, email, skills (skill name, year of experience, proficiency of skill).
+ * @function CreateEmpForm
+ * @returns {html}
  */
 export default function CreateEmpForm() {
     /**
@@ -28,6 +30,7 @@ export default function CreateEmpForm() {
 
     /**
     * Validation of fullName and email
+    * @method handleValidation
     * @returns {boolean} - pass the validation
     */
     const handleValidation = async () => {
@@ -54,11 +57,15 @@ export default function CreateEmpForm() {
                 currentErrors[key] = "Email format need to be (firstname.lastname@gmail.com).";
             }
         }
-        
         setErrors(currentErrors);
         return Object.keys(currentErrors).length === 0 ;
     };
 
+    /**
+    * Validation of current skill input
+    * @method skillValidation
+    * @returns {boolean} - pass the validation
+    */
     const skillValidation = () => {
         if (!fields.skillName || !fields.skillExp) {
             return false
@@ -79,6 +86,11 @@ export default function CreateEmpForm() {
         return true;
     }
 
+    /**
+    * Add skill to the skill list
+    * @method addSkill
+    * @returns {void}
+    */
     const addSkill = (event) => {
         event.preventDefault();
         // Add skill to store
@@ -88,10 +100,20 @@ export default function CreateEmpForm() {
         setAllowAddSkill(false)
     }
 
+    /**
+    * Handler for input change
+    * @method handleInputChange
+    * @returns {void}
+    */
     const handleInputChange = (event) => {
         setFields({ ...fields, [event.target.name]: event.target.value });
     };
 
+    /**
+    * Handler for save employee data
+    * @method handleSubmit
+    * @returns {void}
+    */
     const handleSubmit = async (event) => {
         event.preventDefault();
         if(await handleValidation()){
