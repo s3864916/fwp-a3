@@ -1,5 +1,5 @@
 import React, { useState, useReducer, useEffect } from "react";
-import { skillsReducer, initialSkills, addSkillAction, clearSkillsAction} from "../reducer/skill";
+import { skillsReducer, initialSkills, addSkillAction, clearSkillsAction} from "./reducer/skill";
 
 export default function CreateEmpForm() {
 
@@ -30,12 +30,11 @@ export default function CreateEmpForm() {
             const lastName = names[1]
             const emailREGX = new RegExp(`^${firstName}.${lastName}@gmail.com$`);
             if (!emailREGX.test(field)){
-                currentErrors[key] = "Email format need to be (firstname.lastname@gmail.com)";
+                currentErrors[key] = "Email format need to be (firstname.lastname@gmail.com).";
             }
         }
         
         setErrors(currentErrors);
-        console.log(Object.keys(currentErrors).length === 0 )
         return Object.keys(currentErrors).length === 0 ;
     };
 
@@ -194,7 +193,7 @@ export default function CreateEmpForm() {
                 </div>
             </div>
             <div className="card-footer text-bg-light">
-                <button type="button" className="btn btn-primary" onClick={handleSubmit}>
+                <button id="save" type="button" className="btn btn-primary" onClick={handleSubmit}>
                     Save
                 </button>
             </div>
