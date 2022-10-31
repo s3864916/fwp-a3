@@ -78,8 +78,13 @@ export default function CreateEmpForm() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         if(await handleValidation()){
-            console.log(fields);
-            console.log(skills);
+            const employee = {
+                "fullName":fields.fullName,
+                "email":fields.email,
+                "skills":skills,
+                "proficiency":fields.proficiency
+            }
+            localStorage.setItem("employee", JSON.stringify(employee))
             setFields({ "fullName": "", "email": "", "skillName": "", "skillExp": "" , "proficiency": "" })
             skillsDispatch(clearSkillsAction());
         }
@@ -140,16 +145,16 @@ export default function CreateEmpForm() {
                         
                         <div className="row form-group">
                             <label htmlFor="proficiency" className="me-10 col-md-2 col-control-label">Proficiency</label>
-                            <div className="col col-md-6 col-form-control ">
+                            <div className="col col-md-6 col-form-control" >
                                 <input type="radio" name="proficiency" id="beginner" className="col me-1"
                                     value="beginner" onClick={handleInputChange} />
-                                <label className="me-3" htmlFor="beginner">Beginner</label>
+                                <label className="me-3" htmlFor="beginner" style={{ fontWeight: "normal" }}>Beginner</label>
                                 <input type="radio" name="proficiency" id="intermediate" className="col me-1"
                                     value="intermediate" onClick={handleInputChange} />
-                                <label className="me-3" htmlFor="intermediate">Intermediate</label>
+                                <label className="me-3" htmlFor="intermediate" style={{ fontWeight: "normal" }} >Intermediate</label>
                                 <input type="radio" name="proficiency" id="advanced" className="col me-1"
                                     value="advanced" onClick={handleInputChange} />
-                                <label className="me-3" htmlFor="advanced">Advanced</label>
+                                <label className="me-3" htmlFor="advanced" style={{ fontWeight: "normal" }} >Advanced</label>
                             </div>
                         </div>
                     </form>
