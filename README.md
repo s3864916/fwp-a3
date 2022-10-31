@@ -14,7 +14,7 @@ This is a react project for _COSC2758 Further Web Programming - Semester 2, 2022
 - **geneate documentation html files:** 
   - npm run docs
 - **browse documentation:** 
-  - open out/index.html 
+  - open docs/index.html 
 
 ### External Package Used
 - **bootstrap**
