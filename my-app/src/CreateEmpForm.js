@@ -1,16 +1,37 @@
 import React, { useState, useReducer, useEffect } from "react";
 import { skillsReducer, initialSkills, addSkillAction, clearSkillsAction} from "./reducer/skill";
 
+/**
+ * form for create employee,
+ * input fields: full name, email, skills (skill name, year of experience, proficiency of skill).
+ */
 export default function CreateEmpForm() {
-
+    /**
+     * All the current value of fields on screen
+     */
     const [fields, setFields] = useState({ "fullName": "", "email": "", "skillName": "", "skillExp": "" , "proficiency": "" });
+    
+    /**
+     * List of skills that added
+     */
     const [skills, skillsDispatch] = useReducer(skillsReducer, initialSkills);
+
+    /**
+     * Map of error message  eg. {fullName: (errorMsg)}
+     */
     const [errors, setErrors] = useState({});
+
+    /**
+     * disable or not the add_new_skill button
+     */
     const [allowAddSkill, setAllowAddSkill] = useState(false)
 
+    /**
+    * Validation of fullName and email
+    * @returns {boolean} - pass the validation
+    */
     const handleValidation = async () => {
         const currentErrors = {};
-
         let key = "fullName"
         let field = fields.fullName.trim();
         const fullNameREGX = /(^[A-Za-z]){0,60}[ ]([A-Za-z]){0,60}$/

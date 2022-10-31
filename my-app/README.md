@@ -1,4 +1,6 @@
-This is a react project
-
-use:
-bootstrap@5.2.2
+Project title
+Project description
+Your (team) details
+How and what to install?
+How to run the project?
+Credits or references.
