@@ -16,13 +16,14 @@ export function skillsReducer(state, action) {
     }
 }
 
-export function addSkillAction(name, year) {
+export function addSkillAction(name, year, proficiency) {
     return {
         type: ADD,
         payload: {
             skill: {
                 "name": name,
-                "year": year
+                "year": year,
+                "proficiency": proficiency
             }
         }
     }

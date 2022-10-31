@@ -43,15 +43,12 @@ export default function CreateEmpForm() {
         if (!fields.skillName || !fields.skillExp) {
             return false
         }
-
         const name = fields.skillName.trim();
         const year = fields.skillExp.trim();
-
         // Skill name validation
         if (name == "" || name.length > 20) {
             return false;
         }
-
         // Skill exp in year validation
         if (!/^[0-9]{1,2}$/.test(year)) {
             return false;
@@ -65,9 +62,9 @@ export default function CreateEmpForm() {
     const addSkill = (event) => {
         event.preventDefault();
         // Add skill to store
-        skillsDispatch(addSkillAction(fields.skillName, fields.skillExp));
+        skillsDispatch(addSkillAction(fields.skillName, fields.skillExp, fields.proficiency));
         // Clear skill for text fields
-        setFields({ ...fields, "skillName":"", "skillExp":""});
+        setFields({ ...fields, "skillName": "", "skillExp": "", "proficiency": ""});
         setAllowAddSkill(false)
     }
 
@@ -82,7 +79,6 @@ export default function CreateEmpForm() {
                 "fullName":fields.fullName,
                 "email":fields.email,
                 "skills":skills,
-                "proficiency":fields.proficiency
             }
             localStorage.setItem("employee", JSON.stringify(employee))
             setFields({ "fullName": "", "email": "", "skillName": "", "skillExp": "" , "proficiency": "" })
@@ -165,12 +161,13 @@ export default function CreateEmpForm() {
                         {skills.length > 0 &&
                             <div className="row mb-3">
                                 <label className="col col-md-2 col-control-label"> Skills Table</label>
-                                <div className="col col-md-6 col-form-control">
+                                <div className="col col-md-5 col-form-control">
                                     <table class="table table-bordered table-hover">
                                         <thead class="table-secondary">
                                             <tr>
                                             <th scope="col">Skill Name</th>
                                             <th scope="col">Years of Experience</th>
+                                            <th scope="col">Proficiency</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -180,6 +177,7 @@ export default function CreateEmpForm() {
                                                     <tr>
                                                         <td>{skill.name}</td>
                                                         <td>{skill.year}</td>
+                                                        <td>{skill.proficiency}</td>
                                                     </tr>
                                                 )
                                             })
