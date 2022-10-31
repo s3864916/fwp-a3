@@ -9,6 +9,8 @@ This is a react project for _COSC2758 Further Web Programming - Semester 2, 2022
 ### Commands
 - **install:** 
   - npm install
+- **test:** 
+  - npm test
 - **geneate documentation html files:** 
   - npm run docs
 - **browse documentation:** 
