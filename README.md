@@ -1,5 +1,5 @@
-## Project description
-This is a react project for COSC2758 Further Web Programming - Semester 2, 2022 - Assignment 3
+# Project description
+This is a react project for _COSC2758 Further Web Programming - Semester 2, 2022 - Assignment 3_
 
 ## Team details
 - **Name:** Yung-En Chi
@@ -18,13 +18,15 @@ This is a react project for COSC2758 Further Web Programming - Semester 2, 2022 
 - **bootstrap**
   - install: npm install bootstrap
   - version: _^5.2.2_
+  - description: For building user interface.
 - **sass**
   - install: npm install sass
   - version: _^1.55.0_
+    - description: For custum theme color of bootstrap.
 - **jsdoc**
   - install: npm install jsdoc
   - version: _^3.6.11_
-
+  - description: For documentation.
  
 ## Run project
 - **run project:** 
