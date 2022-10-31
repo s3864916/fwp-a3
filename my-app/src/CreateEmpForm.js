@@ -96,13 +96,13 @@ export default function CreateEmpForm() {
                 Create Employee
             </div>
             <div className="card-body">
-                <div className="md-3">
+                <div>
                     <form className="form">
 
                         <div className="row form-group mb-3">
-                            <label htmlFor="fullName" className="col col-md-2 col-control-label">Full Name</label>
+                            <label htmlFor="fullName" className="col col-sm-2 col-control-label">Full Name</label>
                             <div className="col">
-                                <input type="text" name="fullName" id="fullName" className="col-md-6 col-form-control"
+                                <input type="text" name="fullName" id="fullName" className="col-sm-6 col-form-control"
                                     value={fields.fullName} onChange={handleInputChange} />
                                 {errors.fullName && 
                                 <div className="text-danger">{errors.fullName}</div>
@@ -111,9 +111,9 @@ export default function CreateEmpForm() {
                         </div>
 
                         <div className="row form-group mb-3">
-                            <label htmlFor="email" className="col-md-2 col-control-label">Email</label>
+                            <label htmlFor="email" className="col col-sm-2 col-control-label">Email</label>
                             <div className="col">
-                                <input type="email" name="email" id="email" className="col-md-6 col-form-control"
+                                <input type="email" name="email" id="email" className="col-sm-6 col-form-control"
                                     value={fields.email} onChange={handleInputChange} />
                                 {errors.email && 
                                 <div className="text-danger">{errors.email}</div>
@@ -123,25 +123,24 @@ export default function CreateEmpForm() {
 
                         <div className="row form-group mb-3">
                             <div className="row mb-3">
-                                <label className="col-md-2 col-control-label"></label>
+                                <label className="col-sm-2 col-control-label"></label>
                                 <div className="col">
-                                    <button type="button" className="ms-1 btn btn-primary col-md-6 btn-sm"
+                                    <button type="button" className="btn btn-primary col-sm-6 btn-sm"
                                         onClick={addSkill} disabled={!allowAddSkill}>Add a new skill</button>
                                 </div>
                             </div>
                             <div className="row mb-3">
-                                <label htmlFor="skill" className="col-md-2 col-control-label">Skill</label>
-                                <div className="col col-md-6">
-                                    <input type="text" name="skillName" id="skillName" className="me-3 col-md-5 col-form-control"
+                                <label htmlFor="skill" className="col-sm-2 col-control-label">Skill</label>
+                                <div className="col col-sm-6">
+                                    <input type="text" name="skillName" id="skillName" className="me-3 col-sm-5 col-form-control"
                                         placeholder={"Name"} value={fields.skillName} onChange={handleInputChange} />
-                                    <input type="number" name="skillExp" id="skillExp" className="me-3 col-md-5 col-form-control"
+                                    <input type="number" name="skillExp" id="skillExp" className="me-3 col-sm-5 col-form-control"
                                         placeholder={"Experience in year"} value={fields.skillExp} onChange={handleInputChange} />
                                 </div>
                             </div>
-
                             <div className="row">
-                                <label htmlFor="proficiency" className="me-10 col-md-2 col-control-label">Proficiency</label>
-                                <div className="col col-md-6 col-form-control" >
+                                <label htmlFor="proficiency" className="me-10 col-sm-2 col-control-label">Proficiency</label>
+                                <div className="col col-sm-6 col-form-control" >
                                     <input type="radio" name="proficiency" id="beginner" className="col me-1"
                                         value="beginner" onClick={handleInputChange} />
                                     <label className="me-3" htmlFor="beginner" style={{ fontWeight: "normal" }}>Beginner</label>
@@ -159,8 +158,8 @@ export default function CreateEmpForm() {
                         <div className="row form-group">
                         {skills.length > 0 &&
                             <div className="row mb-3">
-                                <label className="col col-md-2 col-control-label"> Skills Table</label>
-                                <div className="col col-md-5 col-form-control">
+                                <label className="col col-sm-2 col-control-label"> Skills Table</label>
+                                <div className="col col-sm-5 col-form-control">
                                     <table class="table table-bordered table-hover">
                                         <thead class="table-secondary">
                                             <tr>
