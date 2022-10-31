@@ -107,7 +107,7 @@ export default function CreateEmpForm() {
                         <div className="row form-group mb-3">
                             <label htmlFor="fullName" className="col col-md-2 col-control-label">Full Name</label>
                             <div className="col">
-                                <input type="text" name="fullName" id="fullName" className="md-6 col-form-control"
+                                <input type="text" name="fullName" id="fullName" className="col-md-6 col-form-control"
                                     value={fields.fullName} onChange={handleInputChange} />
                                 {errors.fullName && 
                                 <div className="text-danger">{errors.fullName}</div>
@@ -118,7 +118,7 @@ export default function CreateEmpForm() {
                         <div className="row form-group mb-3">
                             <label htmlFor="email" className="col-md-2 col-control-label">Email</label>
                             <div className="col">
-                                <input type="email" name="email" id="email" className="md-6 col-form-control"
+                                <input type="email" name="email" id="email" className="col-md-6 col-form-control"
                                     value={fields.email} onChange={handleInputChange} />
                                 {errors.email && 
                                 <div className="text-danger">{errors.email}</div>
@@ -134,29 +134,64 @@ export default function CreateEmpForm() {
                                         onClick={addSkill} disabled={!allowAddSkill}>Add a new skill</button>
                                 </div>
                             </div>
-                            <label htmlFor="skill" className="col-md-2 col-control-label">Skill</label>
-                            <div className="col">
-                                <input type="text" name="skillName" id="skillName" className="me-3 col-md-3 col-form-control"
-                                    placeholder={"Name"} value={fields.skillName} onChange={handleInputChange} />
-                                <input type="number" name="skillExp" id="skillExp" className="me-3 col-md-3 col-form-control"
-                                    placeholder={"Experience in year"} value={fields.skillExp} onChange={handleInputChange} />
+                            <div className="row mb-3">
+                                <label htmlFor="skill" className="col-md-2 col-control-label">Skill</label>
+                                <div className="col col-md-6">
+                                    <input type="text" name="skillName" id="skillName" className="me-3 col-md-5 col-form-control"
+                                        placeholder={"Name"} value={fields.skillName} onChange={handleInputChange} />
+                                    <input type="number" name="skillExp" id="skillExp" className="me-3 col-md-5 col-form-control"
+                                        placeholder={"Experience in year"} value={fields.skillExp} onChange={handleInputChange} />
+                                </div>
                             </div>
+
+                            <div className="row">
+                                <label htmlFor="proficiency" className="me-10 col-md-2 col-control-label">Proficiency</label>
+                                <div className="col col-md-6 col-form-control" >
+                                    <input type="radio" name="proficiency" id="beginner" className="col me-1"
+                                        value="beginner" onClick={handleInputChange} />
+                                    <label className="me-3" htmlFor="beginner" style={{ fontWeight: "normal" }}>Beginner</label>
+                                    <input type="radio" name="proficiency" id="intermediate" className="col me-1"
+                                        value="intermediate" onClick={handleInputChange} />
+                                    <label className="me-3" htmlFor="intermediate" style={{ fontWeight: "normal" }} >Intermediate</label>
+                                    <input type="radio" name="proficiency" id="advanced" className="col me-1"
+                                        value="advanced" onClick={handleInputChange} />
+                                    <label className="me-3" htmlFor="advanced" style={{ fontWeight: "normal" }} >Advanced</label>
+                                </div>
+                            </div>
+
                         </div>
                         
                         <div className="row form-group">
-                            <label htmlFor="proficiency" className="me-10 col-md-2 col-control-label">Proficiency</label>
-                            <div className="col col-md-6 col-form-control" >
-                                <input type="radio" name="proficiency" id="beginner" className="col me-1"
-                                    value="beginner" onClick={handleInputChange} />
-                                <label className="me-3" htmlFor="beginner" style={{ fontWeight: "normal" }}>Beginner</label>
-                                <input type="radio" name="proficiency" id="intermediate" className="col me-1"
-                                    value="intermediate" onClick={handleInputChange} />
-                                <label className="me-3" htmlFor="intermediate" style={{ fontWeight: "normal" }} >Intermediate</label>
-                                <input type="radio" name="proficiency" id="advanced" className="col me-1"
-                                    value="advanced" onClick={handleInputChange} />
-                                <label className="me-3" htmlFor="advanced" style={{ fontWeight: "normal" }} >Advanced</label>
-                            </div>
+                        {skills.length > 0 &&
+                            <div className="row mb-3">
+                                <label className="col col-md-2 col-control-label"> Skills Table</label>
+                                <div className="col col-md-6 col-form-control">
+                                    <table class="table table-bordered table-hover">
+                                        <thead class="table-secondary">
+                                            <tr>
+                                            <th scope="col">Skill Name</th>
+                                            <th scope="col">Years of Experience</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        {
+                                            skills.map((skill)=>{
+                                                return (
+                                                    <tr>
+                                                        <td>{skill.name}</td>
+                                                        <td>{skill.year}</td>
+                                                    </tr>
+                                                )
+                                            })
+                                        }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div> 
+                            }
                         </div>
+
+
                     </form>
                 </div>
             </div>
