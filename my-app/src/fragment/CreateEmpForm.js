@@ -1,9 +1,10 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useReducer, useEffect } from "react";
+import { skillsReducer, initialSkills, addSkillAction, clearSkillsAction} from "../reducer/skill";
 
 export default function CreateEmpForm() {
 
-    const [fields, setFields] = useState({ "fullName": "", "email": "", skills: [], "proficiency": "" });
-    const [skill, setSkill] = useState({ "skillName": "", "skillExp": "" });
+    const [fields, setFields] = useState({ "fullName": "", "email": "", "skillName": "", "skillExp": "" , "proficiency": "" });
+    const [skills, skillsDispatch] = useReducer(skillsReducer, initialSkills);
     const [errors, setErrors] = useState({});
     const [allowAddSkill, setAllowAddSkill] = useState(false)
 
@@ -18,9 +19,9 @@ export default function CreateEmpForm() {
         else if (field.length > 60)
             currentErrors[key] = "Too long (over 60 characters).";
         else if (!fullNameREGX.test(field))
-            currentErrors[key] = "Allow only English alphabet.  Format:(firstname lastname).";
+            currentErrors[key] = "Allow only English alphabet.  Format as (firstname lastname).";
 
-        // Check email if name validation is pass
+        // Check email only if when name is validated
         key = "email";
         field = fields.email.trim();
         if (!currentErrors["fullName"]){
@@ -32,53 +33,42 @@ export default function CreateEmpForm() {
                 currentErrors[key] = "Email format need to be (firstname.lastname@gmail.com)";
             }
         }
+        
         setErrors(currentErrors);
-        return errors === {} ;
+        console.log(Object.keys(currentErrors).length === 0 )
+        return Object.keys(currentErrors).length === 0 ;
     };
 
     const skillValidation = () => {
-        if (!skill.skillName || !skill.skillExp) {
-            console.log("false 1");
+        if (!fields.skillName || !fields.skillExp) {
             return false
         }
 
-        const name = skill.skillName.trim();
-        const year = skill.skillExp.trim();
+        const name = fields.skillName.trim();
+        const year = fields.skillExp.trim();
 
         // Skill name validation
         if (name == "" || name.length > 20) {
-            console.log("false 2");
             return false;
         }
 
         // Skill exp in year validation
         if (!/^[0-9]{1,2}$/.test(year)) {
-            console.log("false 3");
             return false;
         }
         if (parseInt(year) < 1 || parseInt(year) > 20) {
-            console.log("false 4");
             return false;
         }
-        console.log("true");
         return true;
-    }
-
-
-    const handleSkillChange = (event) => {
-        setSkill({ ...skill, [event.target.name]: event.target.value })
-        console.log(skill);
-        setAllowAddSkill(skillValidation())
     }
 
     const addSkill = (event) => {
         event.preventDefault();
-        if (skill.skillName.trim() === "" && skill.skillExp.trim() === "") {
-            console.log("prevent empty");
-            return
-        }
-        setFields({ ...fields, "skills": [...fields.skills, skill] });
-        setSkill({ "skillName": "", "skillExp": "" });
+        // Add skill to store
+        skillsDispatch(addSkillAction(fields.skillName, fields.skillExp));
+        // Clear skill for text fields
+        setFields({ ...fields, "skillName":"", "skillExp":""});
+        setAllowAddSkill(false)
     }
 
     const handleInputChange = (event) => {
@@ -87,10 +77,18 @@ export default function CreateEmpForm() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const bb = await handleValidation()
-        if(bb)
-            setFields({ "fullName": "", "email": "", skills: [], "proficiency": "" })
+        if(await handleValidation()){
+            console.log(fields);
+            console.log(skills);
+            setFields({ "fullName": "", "email": "", "skillName": "", "skillExp": "" , "proficiency": "" })
+            skillsDispatch(clearSkillsAction());
+        }
     }
+
+    useEffect(()=>{
+        // Check valid of add skill button
+        setAllowAddSkill(skillValidation())
+    },[fields])
 
     return (
         <div className="card border-primary m-3">
@@ -134,9 +132,9 @@ export default function CreateEmpForm() {
                             <label htmlFor="skill" className="col-md-2 col-control-label">Skill</label>
                             <div className="col">
                                 <input type="text" name="skillName" id="skillName" className="me-3 col-md-3 col-form-control"
-                                    placeholder={"Name"} value={skill.skillName} onChange={handleSkillChange} />
+                                    placeholder={"Name"} value={fields.skillName} onChange={handleInputChange} />
                                 <input type="number" name="skillExp" id="skillExp" className="me-3 col-md-3 col-form-control"
-                                    placeholder={"Experience in year"} value={skill.skillExp} onChange={handleSkillChange} />
+                                    placeholder={"Experience in year"} value={fields.skillExp} onChange={handleInputChange} />
                             </div>
                         </div>
                         
@@ -144,13 +142,13 @@ export default function CreateEmpForm() {
                             <label htmlFor="proficiency" className="me-10 col-md-2 col-control-label">Proficiency</label>
                             <div className="col col-md-6 col-form-control ">
                                 <input type="radio" name="proficiency" id="beginner" className="col me-1"
-                                    value="beginner" onChange={handleInputChange} />
+                                    value="beginner" onClick={handleInputChange} />
                                 <label className="me-3" htmlFor="beginner">Beginner</label>
                                 <input type="radio" name="proficiency" id="intermediate" className="col me-1"
-                                    value="intermediate" onChange={handleInputChange} />
+                                    value="intermediate" onClick={handleInputChange} />
                                 <label className="me-3" htmlFor="intermediate">Intermediate</label>
                                 <input type="radio" name="proficiency" id="advanced" className="col me-1"
-                                    value="advanced" onChange={handleInputChange} />
+                                    value="advanced" onClick={handleInputChange} />
                                 <label className="me-3" htmlFor="advanced">Advanced</label>
                             </div>
                         </div>
