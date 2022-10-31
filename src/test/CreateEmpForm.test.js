@@ -1,5 +1,5 @@
 import { fireEvent, render } from '@testing-library/react';
-import CreateEmpForm from "../CreateEmpForm";
+import CreateEmpForm from "../fragment/CreateEmpForm";
 
 const nameEmptyErrorMsg = "Name is required."
 const nameFormatErrorMsg = "Allow only English alphabet.  Format as (firstname lastname)."
