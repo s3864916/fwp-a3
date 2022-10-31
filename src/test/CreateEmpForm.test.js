@@ -8,8 +8,10 @@ const nameTooLongErrorMsg  = "Too long (over 60 characters)."
 const emailFormatErrorMsg = "Email format need to be (firstname.lastname@gmail.com)."
 
 
-
-
+/**
+ * This test to test the task_C's content, which is validating
+ * This test is specific for name testing
+ */
 test("Validation test of Full Name", async () => {
     const { container } = render(<CreateEmpForm />);
   
@@ -39,6 +41,10 @@ test("Validation test of Full Name", async () => {
 
   }); 
 
+  /**
+   * This test to test the task_C's content, which is validating
+   * This test is specific for email testing
+   */
   test("Validation test of Email", async () => {
     const { container } = render(<CreateEmpForm />);
   
